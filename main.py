@@ -6,11 +6,16 @@ import time
 import os
 from dotenv import load_dotenv
 
+from googletrans import Translator
+
 #  Carica variabili d'ambiente dal file .env
 load_dotenv()
 
 # Ottieni la chiave API dal file .env
 api_key = os.getenv("API_KEY")
+
+# Chiave API di NewsAPI
+news_api_key = os.getenv("API_KEY_NEWS")
 
 # Inizializza il motore vocale
 engine = pyttsx3.init()
@@ -30,6 +35,12 @@ def parla(audio):
     print("Assistente:", audio)
     engine.say(audio)
     engine.runAndWait()
+
+def traduci_testo(testo):
+    traduttore = Translator()
+    tradotto = traduttore.translate(testo, dest='it')
+    return tradotto.text
+
 
 # Funzione per ottenere il meteo
 def ottieni_meteo(città):
@@ -68,16 +79,22 @@ def esegui_comando(comando):
         parla("Sto bene, grazie per avermelo chiesto!")
     elif "orario" in comando.lower():
         orario()
+    elif "notizie" in comando.lower():
+        notizie = ottieni_notizie()
+        parla(notizie)
+        output_label.config(text=notizie)  # Qui aggiorniamo il testo dell'etichetta con le notizie
     elif "saluta" in comando.lower():
         saluta()
     else:
-        parla("Comando non riconosciuto. Prova con 'che tempo fa a Roma' o 'orario'.")
+        parla("Comando non riconosciuto. Prova con 'che tempo fa a Roma', 'orario', o 'notizie'.")
+
+
 
 # Funzione per ascoltare comandi vocali
 def ascolta_comando():
     riconoscitore = sr.Recognizer()
     with sr.Microphone() as source:
-        parla("Ciao, in cosa posso aiutarti? Potrei dirti il meteo o l'orario attuale")
+        parla("Ciao, in cosa posso aiutarti? Potrei dirti meteo, orario attuale, notizie")
         riconoscitore.adjust_for_ambient_noise(source)
         audio = riconoscitore.listen(source)
     try:
@@ -106,6 +123,27 @@ def ascolta_citta():
         parla("Non ho capito la città, ripeti.")
     except sr.RequestError:
         parla("Errore di rete, riprova più tardi.")
+
+        
+def ottieni_notizie():
+    url = f"https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey={news_api_key}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        if data["status"] == "ok":
+            notizie = data["articles"][:3]
+            testo_notizie = "Le ultime notizie: "
+            for i, articolo in enumerate(notizie, 1):
+                titolo = traduci_testo(articolo["title"])
+                descrizione = traduci_testo(articolo["description"]) if articolo["description"] else ""
+                testo_notizie += f"\n{i}. {titolo} - {descrizione}"
+            return testo_notizie
+        else:
+            return "Errore nel recupero delle notizie."
+    except Exception as e:
+        print("Errore:", e)
+        return "Errore nel recupero delle notizie."
+
 
 # Interfaccia grafica
 root = tk.Tk()
