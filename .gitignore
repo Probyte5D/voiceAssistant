@@ -1,0 +1,18 @@
+# Ignora il file .env che contiene le variabili d'ambiente
+.env
+
+# Ignora la cronologia di Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignora la cartella di ambiente virtuale (se esiste)
+venv/
+
+# Aggiungi altri file o cartelle che non vuoi tracciare
+
+# Ignora i file di cronologia e log di Git
+.git/
+*.log
+*.history
