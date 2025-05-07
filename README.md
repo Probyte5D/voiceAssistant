@@ -15,10 +15,19 @@ A simple voice assistant in Italian based on speech recognition, text-to-speech 
 - ✅ Weather forecast from OpenWeatherMap
 - ✅ Latest news from NewsAPI
 - ✅ Simple GUI with Tkinter
-- ✅ Voice commands: **weather**, **time**, **news**, **greet**, **help**
-
+- ✅ Voice commands: **weather**, **time**, **news**, **greet**, **help**, **music**
 ---
 
+### 🎶 Music Functionality
+
+[![Music YT](images/music.png)]
+
+
+The assistant can also play music from YouTube based on your voice commands. Here is how it works:
+
+1. **Voice Command**: You can tell the assistant the name of a song (e.g., "Play Bohemian Rhapsody").
+2. **Search YouTube**: The assistant uses the YouTube API to search for the video.
+3. **Open Video in Browser**: Once the video is found, the assistant opens it in your default browser.
 This is a voice-controlled assistant built in Python that allows you to interact with weather, news, and various other functionalities using speech commands. The assistant utilizes several libraries such as `pyttsx3`, `speech_recognition`, `requests`, `googletrans`, and `tkinter` for a simple graphical user interface (GUI).
   
 ### Technologies Used:
@@ -90,23 +99,29 @@ You can extend it with more commands or connect it to smart devices.
 2. **Install Dependencies**:
    - Install the required Python libraries using `pip`. Open your terminal and run the following commands:
      ```
-     pip install pyttsx3
-     pip install requests
-     pip install speechrecognition
-     pip install googletrans==4.0.0-rc1
-     pip install python-dotenv
-     pip install pyaudio
+    pip install pyttsx3
+    pip install requests
+    pip install speechrecognition
+    pip install googletrans==4.0.0-rc1
+    pip install python-dotenv
+    pip install pyaudio
+    pip install google-api-python-client
+
      ```
 
 3. **Set up API Keys**:
-   - This assistant requires two API keys:
-     - **Weather API** (from [OpenWeatherMap](https://openweathermap.org/api)).
-     - **News API** (from [NewsAPI](https://newsapi.org/)).
+   - This assistant requires three API keys:
+     - **YouTube API** (from [Google Cloud Console](https://console.developers.google.com/))
+     - **Weather API** (from [OpenWeatherMap](https://openweathermap.org/api))
+     - **News API** (from [NewsAPI](https://newsapi.org/))
+
    - Create a `.env` file in the project root directory with the following contents:
      ```
+     API_KEY_YT=your_youtube_api_key
      API_KEY=your_weather_api_key
      API_KEY_NEWS=your_news_api_key
      ```
+
 
 ### Notes:
 - Ensure that your microphone is properly configured and accessible for the `speech_recognition` library to work correctly.
