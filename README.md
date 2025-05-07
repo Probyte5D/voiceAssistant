@@ -1,12 +1,19 @@
-# Voice Assistant - Weather, News, and Commands
+# 🗣️ Voice Assistant in Python
+
+A simple voice assistant in Italian based on speech recognition, text-to-speech synthesis, and external APIs (weather and news), with a Tkinter graphical interface.
+
+## 🧩 Main Features
+
+- ✅ Voice recognition with `speech_recognition`
+- ✅ Text-to-speech synthesis in Italian with `pyttsx3`
+- ✅ Weather forecast from OpenWeatherMap
+- ✅ Latest news from NewsAPI
+- ✅ Simple GUI with Tkinter
+- ✅ Voice commands: **weather**, **time**, **news**, **greet**, **help**
+
+---
 
 This is a voice-controlled assistant built in Python that allows you to interact with weather, news, and various other functionalities using speech commands. The assistant utilizes several libraries such as `pyttsx3`, `speech_recognition`, `requests`, `googletrans`, and `tkinter` for a simple graphical user interface (GUI).
-
-### Features:
-- **Weather Updates**: Get the current weather of any city by simply asking the assistant.
-- **News Headlines**: Get the latest news headlines from TechCrunch, translated into Italian.
-- **Voice Interaction**: Speak to the assistant to ask about the time, weather, and more.
-- **Custom Commands**: The assistant can perform various tasks such as greeting the user, providing the current time, and more.
   
 ### Technologies Used:
 - **Python**: The main programming language used for the assistant.
@@ -15,6 +22,56 @@ This is a voice-controlled assistant built in Python that allows you to interact
 - **requests**: Used to make API requests to get real-time data like weather and news.
 - **googletrans**: A library to translate news articles into Italian.
 - **Tkinter**: A built-in library for creating the GUI for the assistant.
+
+
+
+ **Running the Assistant**:
+   - Once all dependencies are installed and API keys are set up, run the assistant:
+     ```
+     python main.py
+     ```
+
+ **Interacting with the Assistant**:
+   - After launching the program, you will see a simple GUI with a button labeled "🎤 Listen".
+   - Click the button or use the microphone to speak commands such as:
+     - "What’s the weather in [city]?"
+     - "What time is it?"
+     - "Give me the latest news."
+   - The assistant will respond to your commands with both speech and text.
+
+  **🗨️ Available Commands**:
+You can say any of the following voice commands:
+
+"what’s the weather" → It will ask for the city and return the weather forecast.
+
+"what time is it" → It will tell you the current time.
+
+"news" → It will read the top 3 news articles from TechCrunch (translated to Italian).
+
+"greet" → It will greet you verbally.
+
+"help" or "commands" → It will list all available commands.
+
+📁 Project Structure
+bash
+Copia
+Modifica
+voice-assistant/
+│
+├── main.py            # Main file to start the GUI and main flow
+├── voice.py           # Voice functions: speak, listen
+├── commands.py        # Command logic: weather, time, news
+├── .env               # Environment file with API keys
+├── requirements.txt   # Required libraries
+└── README.md          # This file
+
+📌 Notes
+
+The assistant requires an enabled microphone.
+
+It speaks and understands Italian.
+
+You can extend it with more commands or connect it to smart devices.
 
 ### Setup Instructions:
 
@@ -45,27 +102,6 @@ This is a voice-controlled assistant built in Python that allows you to interact
      API_KEY=your_weather_api_key
      API_KEY_NEWS=your_news_api_key
      ```
-
-4. **Running the Assistant**:
-   - Once all dependencies are installed and API keys are set up, run the assistant:
-     ```
-     python main.py
-     ```
-
-5. **Interacting with the Assistant**:
-   - After launching the program, you will see a simple GUI with a button labeled "🎤 Listen".
-   - Click the button or use the microphone to speak commands such as:
-     - "What’s the weather in [city]?"
-     - "What time is it?"
-     - "Give me the latest news."
-   - The assistant will respond to your commands with both speech and text.
-
-### Example Commands:
-- "What’s the weather in Rome?"
-- "Give me the latest news."
-- "What time is it?"
-- "How are you?"
-- "Say hello!"
 
 ### Notes:
 - Ensure that your microphone is properly configured and accessible for the `speech_recognition` library to work correctly.
