@@ -2,6 +2,14 @@
 
 A simple voice assistant in Italian based on speech recognition, text-to-speech synthesis, and external APIs (weather and news), with a Tkinter graphical interface.
 
+## 🎥 Demo Video (con audio)
+
+[![Guarda la demo su Vimeo](images/voice-thumbnail.png)](https://vimeo.com/1082139013/e7f5d5412c?ts=0&share=copy)
+
+🔊 Clicca sull'immagine per aprire il video su Vimeo con l'audio attivo.
+
+🔊 Clicca sull'immagine per vedere il video direttamente dalla repo.
+
 ## 🧩 Main Features
 
 - ✅ Voice recognition with `speech_recognition`
@@ -22,7 +30,6 @@ This is a voice-controlled assistant built in Python that allows you to interact
 - **requests**: Used to make API requests to get real-time data like weather and news.
 - **googletrans**: A library to translate news articles into Italian.
 - **Tkinter**: A built-in library for creating the GUI for the assistant.
-
 
 
  **Running the Assistant**:
