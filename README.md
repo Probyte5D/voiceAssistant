@@ -8,8 +8,6 @@ A simple voice assistant in Italian based on speech recognition, text-to-speech 
 
 🔊 Clicca sull'immagine per aprire il video su Vimeo con l'audio attivo.
 
-🔊 Clicca sull'immagine per vedere il video direttamente dalla repo.
-
 ## 🧩 Main Features
 
 - ✅ Voice recognition with `speech_recognition`
